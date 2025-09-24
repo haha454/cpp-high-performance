@@ -11,6 +11,6 @@ class Recipe(ConanFile):
     def requirements(self):
         self.requires("boost/1.88.0")
 
-    def test_requirements(self):
+    def build_requirements(self):
         self.test_requires("gtest/1.17.0")
         self.test_requires("benchmark/1.9.4")
