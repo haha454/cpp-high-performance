@@ -19,7 +19,7 @@ concept Point = requires(T p) {
   requires Arithmetic<decltype(p.x())>;
 };
 
-// "auto" is not supported as function paramter in visual studio at the time of writing this
+// "auto" is not supported as function parameter in visual studio at the time of writing this
 #ifndef _MSC_VER
 std::floating_point auto dist(Point auto p1, Point auto p2) {
   auto a = p1.x() - p2.x();
@@ -59,7 +59,7 @@ TEST(Point2DConcepts, Dist) {
   std::cout << d;
   ASSERT_DOUBLE_EQ(d, 5.0);
 
-  // Trying to instatiate Point2D with
+  // Trying to instantiate Point2D with
   // unrelevant types is no longer possible
   // auto p = Point2D{"2.0", "2.0"};
 }

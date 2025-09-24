@@ -15,7 +15,7 @@
 // split it into smaller parts and started to use parallel arrays.
 //
 
-// Thist struct is simply called User in the book.
+// This struct is simply called User in the book.
 // We call it OriginalUser here to distinguish it from
 // the smaller version of the User struct defined below.
 struct OriginalUser {
@@ -187,6 +187,6 @@ TEST(ParallelArrays, CompareProcessingTime) {
   n += num_playing_users(playing_users);
   n += num_playing_users(playing_users);
 
-  // Print n to prevent it from being optmized away...
+  // Print n to prevent it from being optimized away...
   std::cout << n << '\n';
 }

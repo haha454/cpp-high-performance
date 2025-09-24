@@ -68,7 +68,7 @@ auto mutating_func(std::vector<Team>& teams) {
 TEST(ConstCorrectness, Nonmutating) {
   const auto teams = std::vector<Team>{};
   nonmutating_func(teams);
-  // mutating_func(teams); // Will not comiple, teams vector is const
+  // mutating_func(teams); // Will not compile, teams vector is const
 }
 
 TEST(ConstCorrectness, Mutating) {

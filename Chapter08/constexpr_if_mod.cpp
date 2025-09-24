@@ -13,7 +13,7 @@ auto generic_mod(const T& v, const T& n) -> T {
   if (std::is_floating_point_v<T>) {
     return std::fmod(v, n);
   } else {
-    return v % n; // if T is a floating point, this line wont compile
+    return v % n; // if T is a floating point, this line won't compile
   }
 }
 
