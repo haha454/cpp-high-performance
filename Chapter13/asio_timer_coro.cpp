@@ -22,7 +22,7 @@ auto async_await(asio::io_context& ctx, std::chrono::duration<R, P> d) {
 
     bool await_ready() { return d_.count() <= 0; }
     void await_suspend(std::coroutine_handle<> h) {
-      t_.expires_from_now(d_);
+      t_.expires_after(d_);
       t_.async_wait([this, h](auto e) mutable {
         this->ec_ = e;
         h.resume();
@@ -50,7 +50,7 @@ struct Detached {
 };
 
 Detached run_task_impl(asio::io_context& ctx, Task<void>&& t) {
-  auto wg = asio::executor_work_guard{ctx.get_executor()};
+  auto wg = asio::make_work_guard(ctx.get_executor());
   co_await t;
 }
 

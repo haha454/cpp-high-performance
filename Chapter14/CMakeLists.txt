@@ -14,7 +14,7 @@ add_executable (${PROJECT_NAME}
   )
 
 target_link_libraries (${PROJECT_NAME}
-  GTest::gtest
+  GTest::gtest_main
 )
 
 
