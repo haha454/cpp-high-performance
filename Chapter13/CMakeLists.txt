@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.14)
 
 project(Chapter13-Asynchronous_Programming_With_Coroutines)
 

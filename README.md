@@ -14,14 +14,14 @@ There are a lot of code examples in this book. Some are taken from the real worl
 
 I have put all the code examples in source files divided by chapter so that it is fairly easy to find the examples you want to experiment with. For example, code examples from chapter 1 resides in the directory named `Chapter01`.
 
- Some chapters contains benchmarks. This code is collected under a subdirectory named `benchmarks`. For example, the benchmark code from chapter 2 are placed in the directory `Chapter02/benchmarks`.
+Some chapters contains benchmarks. This code is collected under a subdirectory named `benchmarks`. For example, the benchmark code from chapter 2 are placed in the directory `Chapter02/benchmarks`.
 
 If you open up the source files, you will note that I have replaced most of the `main()` functions from the examples with test cases written with the Google Test framework. I hope that this will help you rather than confuse you. It allowed me to write helpful descriptions for each example, and it also makes it easier to run all the examples from one chapter at once.
 
 If you want to exclude some of the chapters when building, you can comment out some of the chapters in the file `CMakeList.txt` located in the root of the project.
 
 
-## Compilers, build tools, and libraries 
+## Compilers, build tools, and libraries
 
 In order to build and run the examples you need a recent C++ compiler and [CMake](https://cmake.org) version 3.12 or above.
 
@@ -277,5 +277,5 @@ $ ./Chapter02/benchmarks/Chapter02-Essential_C++_Techniques_Benchmarks
 
 ### Download a free PDF
 
- <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
 <p align="center"> <a href="https://packt.link/free-ebook/9781839216541">https://packt.link/free-ebook/9781839216541 </a> </p>
