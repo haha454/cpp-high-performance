@@ -24,23 +24,18 @@ find_package(benchmark CONFIG REQUIRED)
 
 add_subdirectory("Chapter01")
 add_subdirectory("Chapter02")
-add_subdirectory("Chapter02/benchmarks")
 add_subdirectory("Chapter03")
-add_subdirectory("Chapter03/benchmarks")
 add_subdirectory("Chapter04")
 add_subdirectory("Chapter05")
-add_subdirectory("Chapter05/benchmarks")
 add_subdirectory("Chapter06")
 add_subdirectory("Chapter07")
 add_subdirectory("Chapter08")
 add_subdirectory("Chapter09")
 add_subdirectory("Chapter10")
-add_subdirectory("Chapter10/benchmarks")
 add_subdirectory("Chapter11")
 add_subdirectory("Chapter12")
 add_subdirectory("Chapter13")
 add_subdirectory("Chapter14")
-add_subdirectory("Chapter14/benchmarks")
 
 # ---- Developer mode ----
 

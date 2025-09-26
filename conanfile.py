@@ -2,6 +2,8 @@ from conan import ConanFile
 
 
 class Recipe(ConanFile):
+    name = "cpp-high-performance"
+    version = "0.1.0"
     settings = "os", "compiler", "build_type", "arch"
     generators = "CMakeToolchain", "CMakeDeps", "VirtualRunEnv"
 

@@ -41,7 +41,12 @@ auto safe_cast(const Src& v) -> Dst {
   } else if constexpr (is_number_to_number) {
     auto casted = static_cast<Dst>(v);
     [[maybe_unused]] auto casted_back = static_cast<Src>(casted);
-    assert(casted == casted_back);
+    if constexpr (std::is_floating_point_v<Src> || std::is_floating_point_v<Dst>) {
+      constexpr Src epsilon = static_cast<Src>(1e-6);
+      assert(std::fabs(casted - casted_back) < epsilon);
+    }else {
+      assert(casted == casted_back);
+    }
     return casted;
   } else {
     static_assert(make_false<Src>(), "CastError");

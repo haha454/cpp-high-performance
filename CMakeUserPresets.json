@@ -25,7 +25,11 @@
     {
       "name": "dev-darwin",
       "binaryDir": "${sourceDir}/build/dev-darwin",
-      "inherits": ["dev-common", "ci-darwin"]
+      "inherits": ["dev-common", "ci-darwin"],
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
     },
     {
       "name": "dev-win64",
@@ -45,6 +49,11 @@
       "name": "dev-coverage",
       "binaryDir": "${sourceDir}/build/coverage",
       "inherits": ["dev-mode", "coverage-linux", "conan"]
+    },
+    {
+      "name": "release",
+      "binaryDir": "${sourceDir}/build/release",
+      "inherits": ["ci-darwin", "conan"]
     }
   ],
   "buildPresets": [
@@ -52,6 +61,12 @@
       "name": "dev",
       "configurePreset": "dev",
       "configuration": "Debug",
+      "jobs": 10
+    },
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "configuration": "Release",
       "jobs": 10
     }
   ],
