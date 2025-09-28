@@ -8,72 +8,142 @@
   "configurePresets": [
     {
       "name": "dev-common",
+      "binaryDir": "${sourceDir}/build/Debug",
       "hidden": true,
-      "inherits": ["dev-mode", "conan", "cppcheck"],
+      "inherits": [
+        "dev-mode",
+        "conan-debug"
+      ],
+      "cacheVariables": {
+      }
+    },
+    {
+      "name": "dev-release-common",
+      "binaryDir": "${sourceDir}/build/Release",
+      "hidden": true,
+      "inherits": [
+        "dev-mode",
+        "conan-release"
+      ],
       "cacheVariables": {
       }
     },
     {
       "name": "dev-linux",
-      "binaryDir": "${sourceDir}/build/dev-linux",
-      "inherits": ["dev-common", "ci-linux"],
+      "inherits": [
+        "dev-common",
+        "ci-linux"
+      ],
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "dev-release-linux",
+      "inherits": [
+        "dev-release-common",
+        "ci-linux"
+      ],
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
     },
     {
       "name": "dev-darwin",
-      "binaryDir": "${sourceDir}/build/dev-darwin",
-      "inherits": ["dev-common", "ci-darwin"],
+      "inherits": [
+        "dev-common",
+        "ci-darwin"
+      ],
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
     },
     {
+      "name": "dev-release-darwin",
+      "inherits": [
+        "dev-release-common",
+        "ci-darwin"
+      ],
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
       "name": "dev-win64",
-      "binaryDir": "${sourceDir}/build/dev-win64",
-      "inherits": ["dev-common", "ci-win64"],
+      "binaryDir": "${sourceDir}/build/Debug",
+      "inherits": [
+        "dev-common",
+        "ci-win64"
+      ],
       "environment": {
         "UseMultiToolTask": "true",
         "EnforceProcessCountAcrossBuilds": "true"
       }
     },
     {
-      "name": "dev",
-      "binaryDir": "${sourceDir}/build/dev",
-      "inherits": "dev-darwin"
-    },
-    {
-      "name": "dev-coverage",
-      "binaryDir": "${sourceDir}/build/coverage",
-      "inherits": ["dev-mode", "coverage-linux", "conan"]
-    },
-    {
-      "name": "release",
-      "binaryDir": "${sourceDir}/build/release",
-      "inherits": ["ci-darwin", "conan"]
+      "name": "dev-release-win64",
+      "inherits": [
+        "dev-release-common",
+        "ci-win64"
+      ],
+      "environment": {
+        "UseMultiToolTask": "true",
+        "EnforceProcessCountAcrossBuilds": "true"
+      }
     }
   ],
   "buildPresets": [
     {
-      "name": "dev",
-      "configurePreset": "dev",
+      "name": "dev-common",
+      "hidden": true,
       "configuration": "Debug",
       "jobs": 10
     },
     {
-      "name": "release",
-      "configurePreset": "release",
+      "name": "dev-release-common",
+      "hidden": true,
       "configuration": "Release",
       "jobs": 10
+    },
+    {
+      "name": "dev-linux",
+      "inherits": "dev-common",
+      "configurePreset": "dev-linux"
+    },
+    {
+      "name": "dev-release-linux",
+      "inherits": "dev-release-common",
+      "configurePreset": "dev-release-linux"
+    },
+    {
+      "name": "dev-darwin",
+      "inherits": "dev-common",
+      "configurePreset": "dev-darwin"
+    },
+    {
+      "name": "dev-release-darwin",
+      "inherits": "dev-release-common",
+      "configurePreset": "dev-release-darwin"
+    },
+    {
+      "name": "dev-win64",
+      "inherits": "dev-common",
+      "configurePreset": "dev-win64"
+    },
+    {
+      "name": "dev-release-win64",
+      "inherits": "dev-release-common",
+      "configurePreset": "dev-release-win64"
     }
   ],
   "testPresets": [
     {
-      "name": "dev",
-      "configurePreset": "dev",
+      "name": "dev-common",
+      "hidden": true,
       "configuration": "Debug",
       "output": {
         "outputOnFailure": true
@@ -82,6 +152,48 @@
         "jobs": 10,
         "noTestsAction": "error"
       }
+    },
+    {
+      "name": "dev-release-common",
+      "hidden": true,
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "jobs": 10,
+        "noTestsAction": "error"
+      }
+    },
+    {
+      "name": "dev-linux",
+      "inherits": "dev-common",
+      "configurePreset": "dev-linux"
+    },
+    {
+      "name": "dev-release-linux",
+      "inherits": "dev-release-common",
+      "configurePreset": "dev-release-linux"
+    },
+    {
+      "name": "dev-darwin",
+      "inherits": "dev-common",
+      "configurePreset": "dev-darwin"
+    },
+    {
+      "name": "dev-release-darwin",
+      "inherits": "dev-release-common",
+      "configurePreset": "dev-release-darwin"
+    },
+    {
+      "name": "dev-win64",
+      "inherits": "dev-common",
+      "configurePreset": "dev-win64"
+    },
+    {
+      "name": "dev-release-win64",
+      "inherits": "dev-release-common",
+      "configurePreset": "dev-release-win64"
     }
   ]
 }

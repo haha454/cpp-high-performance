@@ -1,4 +1,5 @@
 from conan import ConanFile
+from conan.tools.cmake import cmake_layout
 
 
 class Recipe(ConanFile):
@@ -8,7 +9,7 @@ class Recipe(ConanFile):
     generators = "CMakeToolchain", "CMakeDeps", "VirtualRunEnv"
 
     def layout(self):
-        self.folders.generators = "conan"
+        cmake_layout(self)
 
     def requirements(self):
         self.requires("boost/1.88.0")

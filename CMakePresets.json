@@ -1,8 +1,12 @@
 {
-  "version": 2,
+  "version": 4,
+  "include": [
+    "build/Debug/generators/CMakePresets.json",
+    "build/Release/generators/CMakePresets.json"
+  ],
   "cmakeMinimumRequired": {
     "major": 3,
-    "minor": 14,
+    "minor": 23,
     "patch": 0
   },
   "configurePresets": [
@@ -27,28 +31,6 @@
       "inherits": "cmake-pedantic",
       "cacheVariables": {
         "cpp-high-performance_DEVELOPER_MODE": "ON"
-      }
-    },
-    {
-      "name": "conan",
-      "hidden": true,
-      "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/conan/conan_toolchain.cmake",
-        "CMAKE_POLICY_DEFAULT_CMP0091": "NEW"
-      }
-    },
-    {
-      "name": "cppcheck",
-      "hidden": true,
-      "cacheVariables": {
-        "CMAKE_CXX_CPPCHECK": ""
-      }
-    },
-    {
-      "name": "clang-tidy",
-      "hidden": true,
-      "cacheVariables": {
-        "CMAKE_CXX_CLANG_TIDY": "clang-tidy;--header-filter=^${sourceDir}/"
       }
     },
     {
@@ -101,7 +83,7 @@
     {
       "name": "ci-darwin",
       "inherits": ["flags-appleclang", "ci-std"],
-      "generator": "Ninja",
+      "generator": "Unix Makefiles",
       "hidden": true,
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
@@ -131,7 +113,7 @@
     },
     {
       "name": "ci-coverage",
-      "inherits": ["coverage-linux", "dev-mode", "conan"],
+      "inherits": ["coverage-linux", "dev-mode", "conan-release"],
       "cacheVariables": {
         "COVERAGE_HTML_COMMAND": ""
       }
@@ -139,7 +121,7 @@
     {
       "name": "ci-sanitize",
       "binaryDir": "${sourceDir}/build/sanitize",
-      "inherits": ["ci-linux", "dev-mode", "conan"],
+      "inherits": ["ci-linux", "dev-mode", "conan-release"],
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Sanitize",
         "CMAKE_CXX_FLAGS_SANITIZE": "-U_FORTIFY_SOURCE -O2 -g -fsanitize=address,undefined -fno-omit-frame-pointer -fno-common",
@@ -161,15 +143,15 @@
     },
     {
       "name": "ci-macos",
-      "inherits": ["ci-build", "ci-darwin", "dev-mode", "ci-multi-config", "conan"]
+      "inherits": ["ci-build", "ci-darwin", "dev-mode", "conan-release"]
     },
     {
       "name": "ci-ubuntu",
-      "inherits": ["ci-build", "ci-linux", "clang-tidy", "conan", "cppcheck", "dev-mode"]
+      "inherits": ["ci-build", "ci-linux", "dev-mode", "conan-release"]
     },
     {
       "name": "ci-windows",
-      "inherits": ["ci-build", "ci-win64", "dev-mode", "ci-multi-config", "conan"]
+      "inherits": ["ci-build", "ci-win64", "dev-mode", "ci-multi-config", "conan-release"]
     }
   ]
 }
