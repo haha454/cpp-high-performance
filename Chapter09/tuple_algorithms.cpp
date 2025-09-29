@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <tuple>
+#include <algorithm>
+#include <functional>
 #include <gtest/gtest.h>
 
 template <size_t Index, typename Tuple, typename Func> 
