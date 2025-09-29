@@ -3,6 +3,8 @@
 #include <tuple>
 #include <algorithm>
 #include <functional>
+#include <cmath>
+#include <cstdlib>
 #include <gtest/gtest.h>
 
 template <size_t Index, typename Tuple, typename Func> 
