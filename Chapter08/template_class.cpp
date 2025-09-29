@@ -1,4 +1,6 @@
 #include <type_traits>
+#include <cmath>
+#include <cstdlib>
 #include <gtest/gtest.h>
 
 // Rectangle can be of any type
