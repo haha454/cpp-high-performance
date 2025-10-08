@@ -16,5 +16,7 @@ target_link_libraries(${PROJECT_NAME} GTest::gtest_main Boost::boost)
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   # Build asio server as a standalone program
   file(GLOB SERVER_SRC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/asio_server.cpp")
-  add_executable("asio_server" ${SERVER_SRC_FILES})
+  set(ASIO_SERVER_EXE_NAME asio_server)
+  add_executable(${ASIO_SERVER_EXE_NAME} ${SERVER_SRC_FILES})
+  target_link_libraries(${ASIO_SERVER_EXE_NAME} Boost::boost)
 endif()
