@@ -13,7 +13,7 @@ add_executable(${PROJECT_NAME} ${CHAPTER_SRC_FILES})
 target_link_libraries(${PROJECT_NAME} GTest::gtest_main Boost::boost)
 
 # Boost 1.72 only supports awaitable when using MSVC or Clang
-if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
   # Build asio server as a standalone program
   file(GLOB SERVER_SRC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/asio_server.cpp")
   set(ASIO_SERVER_EXE_NAME asio_server)

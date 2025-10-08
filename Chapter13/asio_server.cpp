@@ -29,7 +29,7 @@ auto serve_client(tcp::socket socket) -> asio::awaitable<void> {
       auto n = co_await async_write(socket, buf, asio::use_awaitable);
       std::cout << "Wrote " << n << " byte(s)\n";
       ++counter;
-      timer.expires_from_now(100ms);
+      timer.expires_after(100ms);
       co_await timer.async_wait(asio::use_awaitable);
     } catch (...) {
       // Error or client disconnected
