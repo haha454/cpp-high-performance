@@ -1,4 +1,3 @@
-#include <version>
 #if defined(__cpp_lib_execution) && defined(__cpp_lib_parallel_algorithm)
 
 #include <gtest/gtest.h>
