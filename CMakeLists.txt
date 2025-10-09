@@ -22,6 +22,7 @@ find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 find_package(benchmark CONFIG REQUIRED)
 
+enable_testing()
 add_subdirectory("Chapter01")
 add_subdirectory("Chapter02")
 add_subdirectory("Chapter03")

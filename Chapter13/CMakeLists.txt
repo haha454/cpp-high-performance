@@ -11,6 +11,7 @@ file(GLOB CHAPTER_SRC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp" "${CMAKE_CURRENT
 list(FILTER CHAPTER_SRC_FILES EXCLUDE REGEX ".*asio_server.cpp")
 add_executable(${PROJECT_NAME} ${CHAPTER_SRC_FILES})
 target_link_libraries(${PROJECT_NAME} GTest::gtest_main Boost::boost)
+gtest_discover_tests(${PROJECT_NAME})
 
 # Boost 1.72 only supports awaitable when using MSVC or Clang
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")

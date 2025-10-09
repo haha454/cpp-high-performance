@@ -6,3 +6,4 @@ file(GLOB CHAPTER_SRC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp" "${CMAKE_CURRENT
 
 add_executable(${PROJECT_NAME} ${CHAPTER_SRC_FILES})
 target_link_libraries(${PROJECT_NAME} GTest::gtest_main Boost::boost)
+gtest_discover_tests(${PROJECT_NAME})
