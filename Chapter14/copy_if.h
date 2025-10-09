@@ -4,6 +4,7 @@
 #include <cassert>
 #include <future>
 #include <vector>
+#include <algorithm>
 
 //
 // Sequential copy_if() similar to std::copy_if()
