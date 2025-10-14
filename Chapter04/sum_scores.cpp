@@ -24,7 +24,7 @@ struct BigObject {
 template <class T>
 auto sum_scores(const std::vector<T>& objects) {
   ScopedTimer t{"sum_scores"};
-  auto sum = 0;
+  auto sum = 0ll;
   for (const auto& obj : objects) {
     sum += obj.score_;
   }
@@ -40,14 +40,14 @@ TEST(SumScores, CompareProcessingTime) {
   auto big_objects = std::vector<BigObject>(num_objects);
 
   std::cout << "+++ sum_scores using SmallObject +++" << '\n';
-  auto small_sum = 0ul;
+  auto small_sum = 0ull;
   small_sum += sum_scores(small_objects);
   small_sum += sum_scores(small_objects);
   small_sum += sum_scores(small_objects);
   small_sum += sum_scores(small_objects);
 
   std::cout << "+++ sum_scores using BigObject +++" << '\n';
-  auto big_sum = 0ul;
+  auto big_sum = 0ull;
   big_sum += sum_scores(big_objects);
   big_sum += sum_scores(big_objects);
   big_sum += sum_scores(big_objects);

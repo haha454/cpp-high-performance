@@ -21,8 +21,8 @@ TEST(Transform, NaiveParallel) {
   const auto n = 1'000'000ul;
   auto src = std::vector<int>(n);
   std::iota(src.begin(), src.end(), 0);
-  auto dst = std::vector<int>(src.size());
-  auto f = [](int x) { return x * x; };
+  auto dst = std::vector<long long>(src.size());
+  auto f = [](int x) { return 1ll * x * x; };
   par_transform_naive(src.begin(), src.end(), dst.begin(), f);
 
   for (size_t i = 0; i < dst.size(); ++i) {
@@ -36,8 +36,8 @@ TEST(Transform, DivideAndConquer) {
 
   auto src = std::vector<int>(n);
   std::iota(src.begin(), src.end(), 0);
-  auto dst = std::vector<int>(src.size());
-  auto f = [](int x) { return x * x; };
+  auto dst = std::vector<long long>(src.size());
+  auto f = [](int x) { return 1ll * x * x; };
 
   par_transform(src.begin(), src.end(), dst.begin(), f, chunk_sz);
   for (size_t i = 0; i < dst.size(); ++i) {

@@ -20,6 +20,7 @@ TEST(Alignment, PointerAddress) {
   auto* p = new char{};
   auto max_alignment = alignof(std::max_align_t);
   ASSERT_TRUE(is_aligned(p, max_alignment));
+  delete p;
 }
 
 // Memory returned from new is correctly aligned for std::max_align_t
@@ -32,6 +33,8 @@ TEST(Alignment, SingleByteAllocation) {
   std::cout << "Num bytes between p1 and p2: " << a2 - a1 << '\n';
   // auto max_alignment = alignof(std::max_align_t);
   // ASSERT_TRUE(is_aligned(p, max_alignment));
+  delete p1;
+  delete p2;
 }
 
 // A type with custom alignment
@@ -48,6 +51,7 @@ TEST(Alignment, CacheLine) {
 
   auto* p = new CacheLine{};
   ASSERT_TRUE(is_aligned(p, 64));
+  delete p;
 }
 
 // new with alignment
