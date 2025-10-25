@@ -11,7 +11,7 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
     - uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
   sanitize:
     needs: [lint]
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     env: { CXX: clang++-18 }
 
@@ -77,12 +77,19 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-15, ubuntu-24.04]
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Set linux compiler
+      if: runner.os == 'Linux'
+      env:
+        CXX: "clang++-18"
+      run: |
+        echo "CXX is: ${{ env.CXX }}"
 
     - name: Install Python
       uses: actions/setup-python@v5
