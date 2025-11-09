@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include <gtest/gtest.h>
+#include <algorithm>
 
 //
 // This example demonstrates how to use a priority queue for

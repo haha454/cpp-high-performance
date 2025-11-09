@@ -1,6 +1,10 @@
 #include <iostream>
 #include <string>
 #include <tuple>
+#include <algorithm>
+#include <functional>
+#include <cmath>
+#include <cstdlib>
 #include <gtest/gtest.h>
 
 template <size_t Index, typename Tuple, typename Func> 
@@ -44,8 +48,13 @@ TEST(TupleAlgorithms, ForEach) {
 
 TEST(TupleAlgorithms, AnyOf) {
   auto tuple = std::make_tuple(42, 43.0f, 44.0);
-  auto contains_44 = tuple_any_of(tuple, [](const auto& v) {
-    return v == 44;
+  auto contains_44 = tuple_any_of(tuple, []<typename T>(const T& v) {
+    if constexpr (std::is_floating_point_v<T>) {
+      constexpr T epsilon = static_cast<T>(1e-6);
+      return std::fabs(v - 44) < epsilon;
+    } else {
+      return v == 44;
+    }
   });
   (void)(contains_44);
 }

@@ -13,16 +13,18 @@ auto generic_mod(const T& v, const T& n) -> T {
   if (std::is_floating_point_v<T>) {
     return std::fmod(v, n);
   } else {
-    return v % n; // if T is a floating point, this line wont compile
+    return v % n; // if T is a floating point, this line won't compile
   }
 }
 
 template <typename T>
 auto constexpr_if_generic_mod(const T& v, const T& n) -> T {
-  assert(n != 0);
   if constexpr (std::is_floating_point_v<T>) {
+    constexpr T epsilon = static_cast<T>(1e-6);
+    assert(std::fabs(n) > epsilon);
     return std::fmod(v, n);
   } else {        // If T is a floating point,
+    assert(n != 0);
     return v % n; // this code is eradicated
   }
 }

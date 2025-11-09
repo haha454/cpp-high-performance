@@ -1,3 +1,6 @@
+#include <type_traits>
+#include <cmath>
+#include <cstdlib>
 #include <gtest/gtest.h>
 
 // Rectangle can be of any type
@@ -15,7 +18,12 @@ private:
 
 template <typename T> 
 auto is_square(const Rectangle<T>& r) {
-  return r.width() == r.height();
+  if constexpr (std::is_floating_point_v<T>) {
+    constexpr T epsilon = static_cast<T>(1e-6);
+    return std::fabs(r.width() - r.height()) < epsilon;
+  } else {
+    return r.width() == r.height();
+  }
 }
 
 TEST(TemplateClass, FloatAndIntSquare) {

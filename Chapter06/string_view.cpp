@@ -17,10 +17,11 @@ namespace {
 
 auto split(std::string_view s, char delim) {
   const auto to_string = [](auto&& r) -> std::string {
-    const auto cv = std::ranges::common_view{r};
-    return {cv.begin(), cv.end()};       
+    auto first = std::ranges::begin(r);
+    std::string_view sv(&*first, std::ranges::distance(r));
+    return std::string{sv};
   };
-  const auto v =
+  auto v =
       std::ranges::split_view{s, delim} | std::views::transform(to_string);
   return to_vector(v);
 }

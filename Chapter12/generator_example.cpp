@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "chapter_12.h"
 #ifdef SUPPORTS_COROUTINES
 

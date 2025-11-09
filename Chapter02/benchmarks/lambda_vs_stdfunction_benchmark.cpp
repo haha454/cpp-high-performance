@@ -34,5 +34,4 @@ static void use_std_function(benchmark::State& state) {
 
 BENCHMARK(use_lambda);
 BENCHMARK(use_std_function);
-BENCHMARK_MAIN();
 

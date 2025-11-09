@@ -17,10 +17,10 @@ struct Number {
   // ...
 
   // Use consistent comparison (C++20)
-  // auto operator<=>(const Number&) const = default; // [ Requires C++20 ]
+  auto operator<=>(const Number&) const = default; // [ Requires C++20 ]
   // Fallback if not supporting operator<=>
-  bool operator==(const Number& rhs) const { return i_ == rhs.i_; }
-  bool operator!=(const Number& rhs) const { return !(*this == rhs); }
+  // bool operator==(const Number& rhs) const { return i_ == rhs.i_; }
+  // bool operator!=(const Number& rhs) const { return !(*this == rhs); }
   int i_{};
 };
 

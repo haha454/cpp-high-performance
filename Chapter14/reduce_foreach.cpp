@@ -15,7 +15,7 @@ TEST(ReduceForeach, TransformReduce) {
 
 TEST(ReduceForeach, ForEachFunctor) {
   struct Func {
-    void operator()(const std::string& s) { res += s; };
+    void operator()(const std::string& s) { res += s; }
     std::string res{}; // State
   };
   auto v = std::vector<std::string>{"A", "B", "C"};
